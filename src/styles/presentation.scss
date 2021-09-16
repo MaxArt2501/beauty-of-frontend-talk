@@ -1,0 +1,104 @@
+@import "core/typography.scss";
+@import "core/utility.scss";
+@import "core/scaffold.scss";
+
+:root {
+  font-family: Raleway, system-ui, sans-serif;
+  --slide-bg: white;
+  --sliding-duration: 200ms;
+  --fragment-duration: 100ms;
+  --brand-color: #f60;
+}
+
+.our-header {
+  border-left: var(--brand-color) solid .15em;
+  padding: .5em;
+  margin: 0 0 .5em;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(5em, 1fr));
+  grid-gap: 1em;
+  align-items: center;
+}
+
+.cover {
+  --slide-bg: var(--brand-color);
+  background: var(--slide-bg) no-repeat center/133vmin url('../img/logo-antreem-contour.svg');
+  color: white;
+  text-align: center;
+
+  small { display: block; }
+
+  .uff-logo {
+    height: 2em;
+    display: block;
+  }
+
+  .logo {
+    background: white;
+    padding: .2em;
+    border-radius: .5em;
+    height: 5em;
+  }
+}
+
+.links {
+  font-size: 70%;
+  align-self: center;
+
+  li {
+    margin-top: .5em;
+  }
+  a {
+    display: block;
+    width: fit-content;
+    padding-left: 1.75em;
+  }
+}
+
+.antreem-logo {
+  position: absolute;
+  height: 12em;
+  right: 0;
+  bottom: -4em;
+}
+.my-data {
+  > h2 {
+    margin-bottom: 0;
+  }
+  a {
+    color: var(--brand-color);
+  }
+}
+.my-face {
+  border: .1em solid var(--brand-color);
+  border-radius: 50%;
+  height: 6em;
+  float: left;
+  margin: 0 1em;
+}
+.my-info {
+  width: 8em;
+  text-align: center;
+  margin: 2em 2em 0;
+  img {
+    height: 1em;
+    vertical-align: middle;
+  }
+}
+.final-link {
+  a {
+    color: var(--brand-color);
+  }
+  img {
+    display: block;
+    margin: 1em auto 0;
+    height: 7em;
+  }
+}
+
+.shadow {
+  box-shadow: 0 0 .5em rgba(black, .5);
+}
