@@ -131,3 +131,30 @@
 .shadow {
   box-shadow: 0 0 0.5em rgba(black, 0.5);
 }
+
+
+.jsdoc {
+  position: absolute;
+  color: white;
+  top: 7em;
+  left: 15em;
+  white-space: nowrap;
+  font-weight: bold;
+  transform: rotate(30deg);
+
+  img {
+    height: 1.5em;
+    vertical-align: -.15em;
+  }
+}
+.tslogo {
+  position: absolute;
+  top: .5em;
+  left: 10em;
+
+  img {
+    height: 1.5em;
+    background-color: white;
+    transform: rotate(15deg);
+  }
+}

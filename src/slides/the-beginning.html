@@ -33,5 +33,28 @@
   <h1 class="center">&hellip; or ES Modules?</h1>
 </p-slide>
 <p-slide>
-  <img src="img/go-90s.webp" alt="Go 90's!" style="height: 4em;">
+  <pre class="self-center"><p-fragment index="1"><code class="language-js">// @ts-check</code></p-fragment>
+<code class="language-js">import { dialogs, resetControls } from './input.js';
+import { serializeCity, serializeState } from './serialize.js';
+import { setMetadata, updateCityData } from './storage.js';</code>
+
+<p-fragment><code class="language-js">/** @type {number[][]} */
+export let buildings;</code></p-fragment>
+
+<p-fragment><code class="language-js">/**
+ * Renders a city
+ * @param {City} city
+ * @param {CityData} theData
+ */
+export function initializeCity(city, theData) { /* ... */ }</code></p-fragment></pre>
+  <p-fragment class="jsdoc"><img src="img/js-logo.svg">Doc</p-fragment>
+  <p-fragment index="1" class="tslogo"><img src="img/ts-logo.svg"></p-fragment>
+</p-slide>
+<p-slide>
+  <h1 class="center">
+    📝 &#x2192; ↩️ &#x2192; 👀
+  </h1>
+</p-slide>
+<p-slide>
+  <img src="img/awesome.webp" alt="Meme of the kid upping his thumb in front of a computer" style="height: 10em;">
 </p-slide>
