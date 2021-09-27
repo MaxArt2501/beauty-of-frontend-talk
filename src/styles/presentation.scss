@@ -133,6 +133,10 @@
 }
 
 
+.slide-teal {
+  --slide-bg: teal;
+}
+
 .jsdoc {
   position: absolute;
   color: white;
@@ -156,5 +160,19 @@
     height: 1.5em;
     background-color: white;
     transform: rotate(15deg);
+  }
+}
+
+.threedi-spin {
+  animation: threedi-spin linear 2s infinite alternate;
+  display: inline-block
+}
+
+@keyframes threedi-spin {
+  from {
+    transform: scale(1, 1) rotate3d(1, 0, 0, 0) rotate3d(0, 1, 0, 0) rotate3d(0, 0, 1, 0);
+  }
+  to {
+    transform: scale(1.5, -1.5) rotate3d(1, 0, 0, 30deg) rotate3d(0, 1, 0, 45deg) rotate3d(0, 0, 1, 90deg);
   }
 }
