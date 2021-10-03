@@ -51,6 +51,33 @@ export function initializeCity(city, theData) { /* ... */ }</code></p-fragment><
   <p-fragment index="1" class="tslogo"><img src="img/ts-logo.svg"></p-fragment>
 </p-slide>
 <p-slide>
+  <div class="two-columns">
+    <pre class="language-ts"><code>// declaration.d.ts
+type BorderHints = number[][];
+
+interface City {
+  width: number;
+  height: number;
+  borderHints: BorderHints;
+}
+// ...</code></pre>
+    <p-fragment><pre class="language-js"><code>// tsconfig.json
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "allowJs": true
+  },
+  "exclude": ["node_modules"]
+}</code></pre></p-fragment>
+  </div>
+  <p-fragment class="center">
+    <img src="img/ts-logo.svg" alt="TypeScript" style="height: 1.5em; vertical-align: -.125em;">
+    isn't even a dependency!
+  </p-fragment>
+</p-slide>
+<p-slide>
   <h1 class="center">
     📝 &#x2192; ↩️ &#x2192; 👀
   </h1>

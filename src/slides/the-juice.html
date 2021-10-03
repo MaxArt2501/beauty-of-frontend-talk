@@ -52,6 +52,21 @@ section.complete {
   </ul>
 </p-slide>
 <p-slide>
+  <pre class="self-center language-js"><code>/** @type {Promise.&lt;IDBDatabase>} */
+export const dbPromise = new Promise((resolve, reject) => {
+  const request = indexedDB.open('MyCity');
+  request.addEventListener('success', ..., { once: true });
+  request.addEventListener('error', reject, { once: true });
+  request.addEventListener('upgradeneeded', e => {
+    const db = request.result;
+    db.createObjectStore('cities', { keyPath: 'id' });
+    const mdStore = db.createObjectStore('metadata');
+    mdStore.add(VERSION, 'version');
+  });
+});</code></pre>
+  <p-fragment class="center">&hellip; and this just for <em>opening</em> the store!</p-fragment>
+</p-slide>
+<p-slide>
   <h2 class="center">&hellip; what did we learn?</h2>
   <p-fragment class="center">
     <h3>Alternatives <u>exist</u></h3>
@@ -62,4 +77,73 @@ section.complete {
       <li>&hellip;</li>
     </ul>
   </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center">In short&hellip;</h3>
+  <p-fragment>
+    <h1 class="center">Web community is <em>huge!</em></h1>
+  </p-fragment>
+  <p-fragment>
+    <p class="center">And promptly fixes this kind of things.</p>
+  </p-fragment>
+</p-slide>
+<p-slide class="center">
+  <h1>Still too hard?</h1>
+  <img src="img/headache.webp" alt="Clip of a guy having a migraine" style="height: 8em;">
+</p-slide>
+<p-slide class="justify-start">
+  <h1 class="meme-text uppercase center">&hellip; a little hand?</h1>
+  <img src="img/solver.webp" alt="A clip of a robotic hand solving a Rubik's cube" class="full-media">
+</p-slide>
+<p-slide>
+  <h2 class="center">Implementing a <em>solver</em></h2>
+  <p-fragment>
+    <p class="center">Not really FE, it's just algorithm</p>
+  </p-fragment>
+  <p-fragment class="self-center">
+    <p class="center">&hellip; but look ma, I used a <em>generator!</em></p>
+    <pre class="language-js"><code>function* solve(borderHints, buildings, allowedHeights) {
+  // Brutal depth-first search...
+}</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide class="justify-start">
+  <h2 class="meme-text uppercase center">Not really ⚡️ fast&hellip;</h2>
+  <img src="img/slow.webp" alt="Clip of Zootopia's sloth stamping a form" class="full-media">
+</p-slide>
+<p-slide>
+  <h3 class="center" style="margin-block-end: 0;">
+    Threads on the web!
+    <p-fragment><small>&hellip; AKA web workers</small></p-fragment>
+  </h3>
+  <div class="two-columns align-center">
+    <div>
+      <p-fragment style="display: block;">
+        <pre class="language-js"><code>const worker = new Worker('.js');
+worker.postMessage({
+  request: 'hint',
+  token: 1234, ... });
+requests.set(1234, {resolve...});</code></pre></p-fragment>
+      <p-fragment style="display: block;" index="1">
+        <pre class="language-js"><code>worker.addEventListener('message',
+  ({ data }) =>
+    requests.get(data.token)
+      .resolve(data.result)
+);</code></pre></p-fragment>
+    </div>
+    <p-fragment>
+      <pre class="language-js"><code>self.addEventListener('message',
+  ({ data }) => {
+    switch (data.request) {
+      case 'hint':
+        ...
+        self.postMessage({
+          token: data.token,
+          result: ...
+        });
+        break;
+      ...
+}});</code></pre>
+    </p-fragment>
+  </div>
 </p-slide>
