@@ -67,6 +67,9 @@ export const dbPromise = new Promise((resolve, reject) => {
   <p-fragment class="center">&hellip; and this just for <em>opening</em> the store!</p-fragment>
 </p-slide>
 <p-slide>
+  <!-- Add slide of a confused Matt Damon -->
+</p-slide>
+<p-slide>
   <h2 class="center">&hellip; what did we learn?</h2>
   <p-fragment class="center">
     <h3>Alternatives <u>exist</u></h3>
@@ -146,4 +149,44 @@ requests.set(1234, {resolve...});</code></pre></p-fragment>
 }});</code></pre>
     </p-fragment>
   </div>
+</p-slide>
+<p-slide>
+  <h2 class="center">&hellip; still community has your back</h2>
+  <p-fragment>
+    <p class="center">e.g. <a href="https://github.com/GoogleChromeLabs/comlink">Comlink</a></p>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h2 class="center">Puzzle sharing!</h2>
+  <p-fragment>
+    <p class="center">&hellip; using <em>these:</em></p>
+    <img src="" alt="Picture of a QR code">
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center">Implementing a QR Code generator</h3>
+  <img src="img/headache.webp" alt="Clip of a guy having a migraine" style="height: 8em;">
+  <p-fragment class="center">If you want to learn: <a href="https://dev.to/maxart2501/series/13444">dev.to/maxart2501/series/13444</a></p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center" style="margin-bottom: .25em;">A QR Code <em>reader</em>, on the other hand&hellip;</h3>
+  <p-fragment class="center">
+    <img src="img/caniuse-barcode-detector.png" style="width: 100%;" alt="Screenshot of caniuse.com's BarcodeDetector API support, showing good numbers for mobile browsers">
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="language-html self-center"><code>&lt;video>&lt;/video></code></pre>
+  <p-fragment class="self-center">
+    <pre><code class="language-js">const [cameraId] = (await navigator.mediaDevices.enumerateDevices())
+  .filter(device => device.kind === 'videoinput');</code>
+<p-fragment><code class="language-js">const camera = await navigator.mediaDevices
+  .getUserMedia({ video: { deviceId } });</code></p-fragment>
+<p-fragment><code class="language-js">document.querySelector('video').srcObject = camera;</code></p-fragment></pre></p-fragment>
+
+<p-fragment class="self-center"><pre><code class="language-js">const detector = new BarcodeDetector({ formats: ['qr_code'] });
+const [detected] = await detector.detect(video);
+if (detected) { ... }</code></pre></p-fragment>
+</p-slide>
+<p-slide style="--slide-bg: #064d4b;">
+  <img class="full-media" src="img/qrcode-scan.png" alt="A screenshot of the app while scanning a QR Code to import a puzzle">
 </p-slide>
