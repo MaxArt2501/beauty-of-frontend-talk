@@ -177,10 +177,10 @@ requests.set(1234, {resolve...});</code></pre></p-fragment>
 <p-slide>
   <pre class="language-html self-center"><code>&lt;video>&lt;/video></code></pre>
   <p-fragment class="self-center">
-    <pre><code class="language-js">const [cameraId] = (await navigator.mediaDevices.enumerateDevices())
+    <pre><code class="language-js">const [camera] = (await navigator.mediaDevices.enumerateDevices())
   .filter(device => device.kind === 'videoinput');</code>
 <p-fragment><code class="language-js">const camera = await navigator.mediaDevices
-  .getUserMedia({ video: { deviceId } });</code></p-fragment>
+  .getUserMedia({ video: { deviceId: camera.deviceId } });</code></p-fragment>
 <p-fragment><code class="language-js">document.querySelector('video').srcObject = camera;</code></p-fragment></pre></p-fragment>
 
 <p-fragment class="self-center"><pre><code class="language-js">const detector = new BarcodeDetector({ formats: ['qr_code'] });
