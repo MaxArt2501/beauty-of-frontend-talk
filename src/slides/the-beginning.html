@@ -47,8 +47,18 @@ export let buildings;</code></p-fragment>
  * @param {CityData} theData
  */
 export function initializeCity(city, theData) { /* ... */ }</code></p-fragment></pre>
-  <p-fragment class="jsdoc"><img src="img/js-logo.svg">Doc</p-fragment>
-  <p-fragment index="1" class="tslogo"><img src="img/ts-logo.svg"></p-fragment>
+  <p-fragment class="jsdoc">
+    <img src="img/js-logo.svg">Doc
+    <div class="sketchy-arrow" style="width: 3.5em; transform: translate(-3.8em, -1.4em) scale(-1, 1) rotate(-15deg);">
+    </div>
+    <div class="sketchy-arrow" style="width: 4em; transform: translate(-3.7em, 0.5em) scale(-1, 1) rotate(25deg);">
+    </div>
+  </p-fragment>
+  <p-fragment index="1" class="tslogo">
+    <img src="img/ts-logo.svg">
+    <div class="sketchy-arrow" style="width: 2.5em; transform: translate(-2.8em, -1.7em) scale(-1, 1) rotate(-14deg);">
+  </p-fragment>
+  </div>
 </p-slide>
 <p-slide>
   <div class="two-columns">
@@ -61,7 +71,8 @@ interface City {
   borderHints: BorderHints;
 }
 // ...</code></pre>
-    <p-fragment><pre class="language-js"><code>// tsconfig.json
+    <p-fragment>
+      <pre class="language-js"><code>// tsconfig.json
 {
   "compilerOptions": {
     "module": "ESNext",
@@ -70,12 +81,16 @@ interface City {
     "allowJs": true
   },
   "exclude": ["node_modules"]
-}</code></pre></p-fragment>
+}</code></pre>
+    </p-fragment>
   </div>
   <p-fragment class="center">
     <img src="img/ts-logo.svg" alt="TypeScript" style="height: 1.5em; vertical-align: -.125em;">
     isn't even a dependency!
   </p-fragment>
+</p-slide>
+<p-slide>
+  <img src="img/vscode.webp" alt="Screenshot of Visual Studio Code showing advanced Intellisense" class="full-media">
 </p-slide>
 <p-slide>
   <h1 class="center">

@@ -2,12 +2,50 @@
 @import "core/utility.scss";
 @import "core/scaffold.scss";
 
+@property --sketchy-arrow-width {
+  syntax: "<length>";
+  initial-value: 1px;
+  inherits: true;
+}
+@property --sketchy-arrow-tip-spread {
+  syntax: "<angle>";
+  initial-value: 45deg;
+  inherits: true;
+}
+@property --sketchy-arrow-tip-size {
+  syntax: "<number>";
+  initial-value: 40;
+  inherits: true;
+}
+@property --sketchy-arrow-point-approx {
+  syntax: "<number>";
+  initial-value: 3;
+  inherits: true;
+}
+@property --sketchy-arrow-count {
+  syntax: "<integer>";
+  initial-value: 3;
+  inherits: true;
+}
+@property --sketchy-arrow-color {
+  syntax: "<color>";
+  initial-value: black;
+  inherits: true;
+}
+@property --sketchy-arrow-random-seed {
+  syntax: "<integer>";
+  initial-value: 1234;
+  inherits: true;
+}
+
 :root {
   font-family: Raleway, system-ui, sans-serif;
   --slide-bg: white;
   --sliding-duration: 200ms;
   --fragment-duration: 100ms;
   --brand-color: #f60;
+  --sketchy-arrow-width: 0.1em;
+  --sketchy-arrow-tip-size: 20;
 }
 
 .our-header {
@@ -132,7 +170,6 @@
   box-shadow: 0 0 0.5em rgba(black, 0.5);
 }
 
-
 .slide-teal {
   --slide-bg: teal;
 }
@@ -148,12 +185,12 @@
 
   img {
     height: 1.5em;
-    vertical-align: -.15em;
+    vertical-align: -0.15em;
   }
 }
 .tslogo {
   position: absolute;
-  top: .5em;
+  top: 0.5em;
   left: 10em;
 
   img {
@@ -165,14 +202,33 @@
 
 .threedi-spin {
   animation: threedi-spin linear 2s infinite alternate;
-  display: inline-block
+  display: inline-block;
+}
+
+.sketchy-arrow {
+  position: absolute;
+  background: paint(sketchy-arrow);
+  aspect-ratio: 16 / 9;
+  animation: sketchy 0.3s steps(3) infinite;
+  filter: drop-shadow(0.075em 0.075em 0 white);
 }
 
 @keyframes threedi-spin {
   from {
-    transform: scale(1, 1) rotate3d(1, 0, 0, 0) rotate3d(0, 1, 0, 0) rotate3d(0, 0, 1, 0);
+    transform: scale(1, 1) rotate3d(1, 0, 0, 0) rotate3d(0, 1, 0, 0)
+      rotate3d(0, 0, 1, 0);
   }
   to {
-    transform: scale(1.5, -1.5) rotate3d(1, 0, 0, 30deg) rotate3d(0, 1, 0, 45deg) rotate3d(0, 0, 1, 90deg);
+    transform: scale(1.5, -1.5) rotate3d(1, 0, 0, 30deg)
+      rotate3d(0, 1, 0, 45deg) rotate3d(0, 0, 1, 90deg);
+  }
+}
+
+@keyframes sketchy {
+  from {
+    --sketchy-arrow-random-seed: 20;
+  }
+  to {
+    --sketchy-arrow-random-seed: 40;
   }
 }

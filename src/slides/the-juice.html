@@ -26,7 +26,8 @@ section.complete {
 <p-slide>
   <h3 class="center">&hellip; <code>localStorage</code>?</h3>
   <p-fragment class="self-center">
-    <img src="img/super-meh.webp" style="height: 9em;" alt="Superman with an unimpressed expression and 'super meh' written on him">
+    <img src="img/super-meh.webp" style="height: 9em;"
+      alt="Superman with an unimpressed expression and 'super meh' written on him">
   </p-fragment>
 </p-slide>
 <p-slide>
@@ -45,10 +46,18 @@ section.complete {
 <p-slide>
   <ul class="self-center">
     <li>🎉 can store whatever!</li>
-    <li><p-fragment>🎉 asynchronous!</p-fragment></li>
-    <li><p-fragment>😮 &hellip; can still block MT</p-fragment></li>
-    <li><p-fragment>😧 even slower!</p-fragment></li>
-    <li><p-fragment>😭 terrible API!</p-fragment></li>
+    <li>
+      <p-fragment>🎉 asynchronous!</p-fragment>
+    </li>
+    <li>
+      <p-fragment>😮 &hellip; can still block MT</p-fragment>
+    </li>
+    <li>
+      <p-fragment>😧 even slower!</p-fragment>
+    </li>
+    <li>
+      <p-fragment>😭 terrible API!</p-fragment>
+    </li>
   </ul>
 </p-slide>
 <p-slide>
@@ -126,15 +135,21 @@ export const dbPromise = new Promise((resolve, reject) => {
 worker.postMessage({
   request: 'hint',
   token: 1234, ... });
-requests.set(1234, {resolve...});</code></pre></p-fragment>
+requests.set(1234, {resolve...});</code></pre>
+      </p-fragment>
       <p-fragment style="display: block;" index="1">
+        <div class="sketchy-arrow" style="width: 3.5em; transform: translate(9.5em, 1em) scale(-1) rotate(-50deg);">
+        </div>
         <pre class="language-js"><code>worker.addEventListener('message',
   ({ data }) =>
     requests.get(data.token)
       .resolve(data.result)
-);</code></pre></p-fragment>
+);</code></pre>
+      </p-fragment>
     </div>
     <p-fragment>
+      <div class="sketchy-arrow" style="width: 3.5em; transform: translate(-2.5em, 2em) rotate(-15deg);">
+      </div>
       <pre class="language-js"><code>self.addEventListener('message',
   ({ data }) => {
     switch (data.request) {
@@ -166,12 +181,14 @@ requests.set(1234, {resolve...});</code></pre></p-fragment>
 <p-slide>
   <h3 class="center">Implementing a QR Code generator</h3>
   <img src="img/headache.webp" alt="Clip of a guy having a migraine" style="height: 8em;">
-  <p-fragment class="center">If you want to learn: <a href="https://dev.to/maxart2501/series/13444">dev.to/maxart2501/series/13444</a></p-fragment>
+  <p-fragment class="center">If you want to learn: <a
+      href="https://dev.to/maxart2501/series/13444">dev.to/maxart2501/series/13444</a></p-fragment>
 </p-slide>
 <p-slide>
   <h3 class="center" style="margin-bottom: .25em;">A QR Code <em>reader</em>, on the other hand&hellip;</h3>
   <p-fragment class="center">
-    <img src="img/caniuse-barcode-detector.png" style="width: 100%;" alt="Screenshot of caniuse.com's BarcodeDetector API support, showing good numbers for mobile browsers">
+    <img src="img/caniuse-barcode-detector.png" style="width: 100%;"
+      alt="Screenshot of caniuse.com's BarcodeDetector API support, showing good numbers for mobile browsers">
   </p-fragment>
 </p-slide>
 <p-slide>
@@ -181,12 +198,16 @@ requests.set(1234, {resolve...});</code></pre></p-fragment>
   .filter(device => device.kind === 'videoinput');</code>
 <p-fragment><code class="language-js">const camera = await navigator.mediaDevices
   .getUserMedia({ video: { deviceId: camera.deviceId } });</code></p-fragment>
-<p-fragment><code class="language-js">document.querySelector('video').srcObject = camera;</code></p-fragment></pre></p-fragment>
+<p-fragment><code class="language-js">document.querySelector('video').srcObject = camera;</code></p-fragment></pre>
+  </p-fragment>
 
-<p-fragment class="self-center"><pre><code class="language-js">const detector = new BarcodeDetector({ formats: ['qr_code'] });
+  <p-fragment class="self-center">
+    <pre><code class="language-js">const detector = new BarcodeDetector({ formats: ['qr_code'] });
 const [detected] = await detector.detect(video);
-if (detected) { ... }</code></pre></p-fragment>
+if (detected) { ... }</code></pre>
+  </p-fragment>
 </p-slide>
 <p-slide style="--slide-bg: #064d4b;">
-  <img class="full-media" src="img/qrcode-scan.png" alt="A screenshot of the app while scanning a QR Code to import a puzzle">
+  <img class="full-media" src="img/qrcode-scan.png"
+    alt="A screenshot of the app while scanning a QR Code to import a puzzle">
 </p-slide>
