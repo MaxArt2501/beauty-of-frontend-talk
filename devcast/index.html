@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Not just 'sites' anymore: the power of the web today</title>
+  <base href="..">
+  <link rel="shortcut icon" href="img/ts.png" type="image/png">
+  <link rel="stylesheet" href="vendor/prismjs/themes/prism-okaidia.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+  <link rel="stylesheet" href="css/presentation.css">
+</head>
+
+<body>
+  <p-deck>
+    <p-slide class="cover-devcast">
+  <h3>Non più solo siti: la potenza del web di oggi</h3>
+  <h4>
+    Massimo Artizzu
+    <small>Web dev/architect, <a href="https://antreem.com/">Antreem</a></small>
+  </h4>
+  <img src="img/devcast-cover.webp" role="presentation" class="full-media">
+</p-slide>
+<p-slide class="justify-start">
+  <img src="img/logo-antreem-border.svg" alt="Antreem logo" class="antreem-logo">
+  <div class="my-data">
+    <img src="img/maxart.jpg" alt="My face" class="my-face">
+    <h2>Massimo Artizzu</h2>
+    <p>
+      Web dev &amp; architect<br>
+      at <a href="https://antreem.com">Antreem</a>
+    </p>
+  </div>
+  <div class="my-info">
+    <h4>
+      <img src="img/twitter.svg" alt="Twitter logo"> /
+      <img src="img/github.svg" alt="GitHub logo">
+      @MaxArt2501
+    </h4>
+  </div>
+</p-slide>
+<p-slide class="center">
+  <h3>You can find these slides at</h3>
+  <img src="img/qr-slides.svg" alt="QR Code for the presentation's link" style="height: 7em; margin-bottom: 1em;">
+  <a
+    href="https://maxart2501.github.io/beauty-of-frontend-talk/devcast/">maxart2501.github.io/beauty-of-frontend-talk/devcast/</a>
+</p-slide>
+    <p-slide class="justify-start">
+  <h1 class="center meme-text uppercase">
+    È tutto cominciato da&hellip;
+  </h1>
+  <p-fragment><img class="full-media" src="img/brain-trainer.jpg"
+      alt="Pagina di Brain-Trainer che mostra alcuni schemi del gioco 'La mia città'"></p-fragment>
+</p-slide>
+<p-slide>
+  <img src="img/sudoku.svg" alt="Uno schema di sudoku" class="center" style="height: 12em;">
+</p-slide>
+<p-slide>
+  <img src="img/math-guy.webp" alt="Un tizio confuso che conta sulle sue dita" class="full-media">
+</p-slide>
+    <p-slide>
+  <pre class="self-center"><code class="language-js">[
+  {
+    "width": 4,
+    "height": 4,
+    "borderHints": [
+      [3, 2, 0, 3],
+      [2, 3, 0, 2],
+      [2, 0, 2, 0],
+      [1, 2, 0, 3]
+    ]
+  }
+]</code></pre>
+  <p-fragment><img src="img/html5.svg" alt="Logo of HTML5"
+      style="position: absolute;top: 3em;height: 5em;transform: rotate(-30deg);left: 3em;"></p-fragment>
+  <p-fragment><img src="img/css3.svg" alt="Logo of CSS3"
+      style="position: absolute;top: 3em;height: 5em;transform: rotate(30deg);right: 3em;"></p-fragment>
+</p-slide>
+<p-slide class="slide-teal">
+  <img src="img/base-board.png" alt="Board of a game of 'My city'" class="full-media">
+</p-slide>
+<p-slide class="justify-start">
+  <h1 class="center meme-text uppercase">Build</h1>
+  <img src="img/build.webp" alt="Lego character building a house" class="full-media">
+</p-slide>
+<p-slide class="justify-end">
+  <img src="img/not-convinced.webp" alt="Dr. House, MD, unconvinced" class="full-media">
+  <p-fragment>
+    <h3 class="center meme-text">&hellip; TypeScript?</h3>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h1 class="center">&hellip; or ES Modules?</h1>
+</p-slide>
+<p-slide>
+  <pre class="self-center"><p-fragment index="1"><code class="language-js">// @ts-check</code></p-fragment>
+<code class="language-js">import { dialogs, resetControls } from './input.js';
+import { serializeCity, serializeState } from './serialize.js';
+import { setMetadata, updateCityData } from './storage.js';</code>
+
+<p-fragment><code class="language-js">/** @type {number[][]} */
+export let buildings;</code></p-fragment>
+
+<p-fragment><code class="language-js">/**
+ * Renders a city
+ * @param {City} city
+ * @param {CityData} theData
+ */
+export function initializeCity(city, theData) { /* ... */ }</code></p-fragment></pre>
+  <p-fragment class="jsdoc">
+    <img src="img/js-logo.svg">Doc
+    <div class="sketchy-arrow" style="width: 3.5em; transform: translate(-3.8em, -1.4em) scale(-1, 1) rotate(-15deg);">
+    </div>
+    <div class="sketchy-arrow" style="width: 4em; transform: translate(-3.7em, 0.5em) scale(-1, 1) rotate(25deg);">
+    </div>
+  </p-fragment>
+  <p-fragment index="1" class="tslogo">
+    <img src="img/ts-logo.svg">
+    <div class="sketchy-arrow" style="width: 2.5em; transform: translate(-2.8em, -1.7em) scale(-1, 1) rotate(-14deg);">
+  </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <div class="two-columns">
+    <pre class="language-ts"><code>// declaration.d.ts
+type BorderHints = number[][];
+
+interface City {
+  width: number;
+  height: number;
+  borderHints: BorderHints;
+}
+// ...</code></pre>
+    <p-fragment>
+      <pre class="language-js"><code>// tsconfig.json
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "allowJs": true
+  },
+  "exclude": ["node_modules"]
+}</code></pre>
+    </p-fragment>
+  </div>
+  <p-fragment class="center">
+    <img src="img/ts-logo.svg" alt="TypeScript" style="height: 1.5em; vertical-align: -.125em;">
+    isn't even a dependency!
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <img src="img/vscode.webp" alt="Screenshot of Visual Studio Code showing advanced Intellisense" class="full-media">
+</p-slide>
+<p-slide>
+  <h1 class="center">
+    📝 &#x2192; ↩️ &#x2192; 👀
+  </h1>
+</p-slide>
+<p-slide>
+  <h1 class="meme-text center blink uppercase" style="margin-block-end: -1em;">⭐️ '90s rock! ⭐️</h1>
+  <img src="img/awesome.webp" alt="Meme of the kid upping his thumb in front of a computer" style="height: 10em;">
+</p-slide>
+    <p-slide>
+  <h1 class="center">Visibility API</h1>
+  <!-- Add a slide on how it's being used -->
+</p-slide>
+<p-slide>
+  <h1 class="center">Victory? 🎉</h1>
+</p-slide>
+<p-slide class="slide-teal">
+  <video src="img/win.mp4" autoplay muted loop class="full-media"></video>
+</p-slide>
+<p-slide>
+  <h1 class="meme-text uppercase center" style="margin-block-end: -.5em;">
+    <span class="threedi-spin">🎉</span> 3D transforms!
+  </h1>
+  <pre class="self-center language-css"><code>body {
+  --animation-duration: 1s;
+  perspective: 1000px;
+}
+section.complete {
+  transform: translate(0, calc(...))
+    rotate3d(1, 0, 0, 60deg)
+    rotate(45deg);
+  transition: transform var(--animation-duration);
+}
+...</code></pre>
+</p-slide>
+<p-slide>
+  <h1 class="center">Persistent storage? 💾</h1>
+</p-slide>
+<p-slide>
+  <h3 class="center">&hellip; <code>localStorage</code>?</h3>
+  <p-fragment class="self-center">
+    <img src="img/super-meh.webp" style="height: 9em;"
+      alt="Superman with an unimpressed expression and 'super meh' written on him">
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <ul class="self-center">
+    <li>🤔 syncronous</li>
+    <li>🤔 only for strings</li>
+    <li>🤔 slow</li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h3 class="center">IndexedDB! 🎉</h3>
+  <p-fragment class="self-center">
+    <img src="img/excited.webp" style="height: 9em;" alt="Clip of a quite excited man">
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <ul class="self-center">
+    <li>🎉 can store whatever!</li>
+    <li>
+      <p-fragment>🎉 asynchronous!</p-fragment>
+    </li>
+    <li>
+      <p-fragment>😮 &hellip; can still block MT</p-fragment>
+    </li>
+    <li>
+      <p-fragment>😧 even slower!</p-fragment>
+    </li>
+    <li>
+      <p-fragment>😭 terrible API!</p-fragment>
+    </li>
+  </ul>
+</p-slide>
+<p-slide>
+  <pre class="self-center language-js"><code>/** @type {Promise.&lt;IDBDatabase>} */
+export const dbPromise = new Promise((resolve, reject) => {
+  const request = indexedDB.open('MyCity');
+  request.addEventListener('success', ..., { once: true });
+  request.addEventListener('error', reject, { once: true });
+  request.addEventListener('upgradeneeded', e => {
+    const db = request.result;
+    db.createObjectStore('cities', { keyPath: 'id' });
+    const mdStore = db.createObjectStore('metadata');
+    mdStore.add(VERSION, 'version');
+  });
+});</code></pre>
+  <p-fragment class="center">&hellip; and this just for <em>opening</em> the store!</p-fragment>
+</p-slide>
+<p-slide>
+  <img src="img/regret.webp" alt="Clip of a man saying 'I regret everything'" class="full-media">
+</p-slide>
+<p-slide>
+  <h2 class="center">&hellip; what did we learn?</h2>
+  <p-fragment class="center">
+    <h3>Alternatives <u>exist</u></h3>
+    <ul>
+      <li>idb</li>
+      <li>localForage</li>
+      <li>dexie.js</li>
+      <li>&hellip;</li>
+    </ul>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center">In short&hellip;</h3>
+  <p-fragment>
+    <h1 class="center">Web community is <em>huge!</em></h1>
+  </p-fragment>
+  <p-fragment>
+    <p class="center">And promptly fixes this kind of things.</p>
+  </p-fragment>
+</p-slide>
+<p-slide class="center">
+  <h1>Still too hard!</h1>
+  <img src="img/crying-with-wine.webp" alt="Clip of a guy having a migraine" style="height: 8em;">
+</p-slide>
+<p-slide class="justify-start">
+  <h1 class="meme-text uppercase center">&hellip; a little hand?</h1>
+  <img src="img/solver.webp" alt="A clip of a robotic hand solving a Rubik's cube" class="full-media">
+</p-slide>
+<p-slide>
+  <h2 class="center">Implementing a <em>solver</em></h2>
+  <p-fragment>
+    <p class="center">Not really FE, it's just algorithm</p>
+  </p-fragment>
+  <p-fragment class="self-center">
+    <p class="center">&hellip; but look ma, I used a <em>generator!</em></p>
+    <pre class="language-js"><code>function* solve(borderHints, buildings, allowedHeights) {
+  // Brutal depth-first search...
+}</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide class="justify-start">
+  <h2 class="meme-text uppercase center">Not really ⚡️ fast&hellip;</h2>
+  <img src="img/slow.webp" alt="Clip of Zootopia's sloth stamping a form" class="full-media">
+</p-slide>
+<p-slide>
+  <h3 class="center" style="margin-block-end: 0;">
+    Threads on the web!
+    <p-fragment><small>&hellip; AKA web workers</small></p-fragment>
+  </h3>
+  <div class="two-columns align-center">
+    <div>
+      <p-fragment style="display: block;">
+        <pre class="language-js"><code>const worker = new Worker('.js');
+worker.postMessage({
+  request: 'hint',
+  token: 1234, ... });
+requests.set(1234, {resolve...});</code></pre>
+      </p-fragment>
+      <p-fragment style="display: block;" index="1">
+        <div class="sketchy-arrow" style="width: 3.5em; transform: translate(9.5em, 1em) scale(-1) rotate(-50deg);">
+        </div>
+        <pre class="language-js"><code>worker.addEventListener('message',
+  ({ data }) =>
+    requests.get(data.token)
+      .resolve(data.result)
+);</code></pre>
+      </p-fragment>
+    </div>
+    <p-fragment>
+      <div class="sketchy-arrow" style="width: 3.5em; transform: translate(-2.5em, 2em) rotate(-15deg);">
+      </div>
+      <pre class="language-js"><code>self.addEventListener('message',
+  ({ data }) => {
+    switch (data.request) {
+      case 'hint':
+        ...
+        self.postMessage({
+          token: data.token,
+          result: ...
+        });
+        break;
+      ...
+}});</code></pre>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <h2 class="center">&hellip; still community has your back</h2>
+  <p-fragment>
+    <p class="center">e.g. <a href="https://github.com/GoogleChromeLabs/comlink">Comlink</a></p>
+  </p-fragment>
+</p-slide>
+<p-slide class="center">
+  <h2>Puzzle sharing!</h2>
+  <p-fragment>
+    <p>&hellip; using <em>these:</em></p>
+    <img src="img/qr-slides.svg" alt="Picture of a QR code" style="height: 7em;">
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center">Implementing a QR Code generator</h3>
+  <img src="img/headache.webp" alt="Clip of a guy having a migraine" style="height: 8em;">
+  <p-fragment class="center">If you want to learn: <a
+      href="https://dev.to/maxart2501/series/13444">dev.to/maxart2501/series/13444</a></p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center" style="margin-bottom: .25em;">A QR Code <em>reader</em>, on the other hand&hellip;</h3>
+  <p-fragment class="center">
+    <img src="img/caniuse-barcode-detector.webp" style="width: 100%;"
+      alt="Screenshot of caniuse.com's BarcodeDetector API support, showing good numbers for mobile browsers">
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <pre class="language-html self-center"><code>&lt;video>&lt;/video></code></pre>
+  <p-fragment class="self-center">
+    <pre><code class="language-js">const [camera] = (await navigator.mediaDevices.enumerateDevices())
+  .filter(device => device.kind === 'videoinput');</code>
+<p-fragment><code class="language-js">const camera = await navigator.mediaDevices
+  .getUserMedia({ video: { deviceId: camera.deviceId } });</code></p-fragment>
+<p-fragment><code class="language-js">document.querySelector('video').srcObject = camera;</code></p-fragment></pre>
+  </p-fragment>
+
+  <p-fragment class="self-center">
+    <pre><code class="language-js">const detector = new BarcodeDetector({ formats: ['qr_code'] });
+const [detected] = await detector.detect(video);
+if (detected) { ... }</code></pre>
+  </p-fragment>
+</p-slide>
+<p-slide style="--slide-bg: #064d4b;">
+  <img class="full-media" src="img/qrcode-scan.png"
+    alt="A screenshot of the app while scanning a QR Code to import a puzzle">
+</p-slide>
+<p-slide>
+  <h1 class="center">Project Fugu 🐡</h1>
+</p-slide>
+    <p-slide class="justify-start">
+  <h1 class="meme-text uppercase">Ship it!</h1>
+  <video src="img/ship-it.webm" autoplay muted loop class="full-media"></video>
+</p-slide>
+<p-slide>
+  <ul class="center">
+    <li>
+      ☝ a <code>manifest</code> file
+    </li>
+    <li>
+      <p-fragment>✌ a service worker w/ <code>fetch</code></p-fragment>
+    </li>
+  </ul>
+</p-slide>
+    <p-slide>
+  <h4 class="our-header">Links</h4>
+  <ul class="links">
+    <li>
+      🔗 My City: the game
+      <a href="https://maxart2501.github.io/my-city/">
+        maxart2501.github.io/my-city/
+      </a>
+    </li>
+  </ul>
+</p-slide>
+    <p-slide>
+  <h1 class="center">
+    That's all, folks!<br>👋
+  </h1>
+</p-slide>
+<p-slide>
+  <h3 class="center final-link">
+    <a href="https://maxart2501.github.io/beauty-of-frontend-talk/devcast/">
+      maxart2501.github.io/beauty-of-frontend-talk/devcast/
+    </a>
+    <img src="img/qr-slides.svg" alt="QR Code for the presentation's link">
+  </h3>
+</p-slide>
+<p-slide>
+  <pre class="self-center big"><code class="language-typescript">const question: Question[] = await getQuestions()
+questions.forEach((question: Question) => {
+  question.answer()
+})</code></pre>
+</p-slide>
+  </p-deck>
+  <div role="progressbar" class="presentation-progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
+  <div role="toolbar" class="presentation-toolbar">
+    <button type="button" class="toggle-mode" title="Toggle speaker mode" aria-label="Toggle speaker mode (Alt-M)">
+      <svg viewBox="0 0 1 1">
+        <path stroke-width="0.1" stroke="currentColor" fill="none"
+          d="M.05 .5h.6v-.45h-.6v.9h.6v-.45M.75 .05h.25M.75 .2h.25M.75 .35h.25" />
+      </svg>
+    </button>
+    <button type="button" class="fullscreen" title="Toggle fullscreen mode" aria-label="Toggle fullscreen mode">
+      <svg viewBox="0 0 1 1">
+        <g stroke="currentColor" fill="none" stroke-width="0.1">
+          <path d="M.05 .3v-.25h.25M.7 .05h.25v.25M.95 .7v.25h-.25M.3 .95h-.25v-.25" />
+          <path d="M.05 .3h.25v-.25M.7 .05v.25h.25M.95 .7h-.25v.25M.3 .95v-.25h-.25" />
+        </g>
+      </svg>
+    </button>
+  </div>
+  <nav class="presentation-nav">
+    <button type="button" class="previous" title="Go backward" aria-label="Go backward"></button>
+    <button type="button" class="next" title="Go forward" aria-label="Go forward"></button>
+  </nav>
+  <script type="module" src="js/main.js"></script>
+  <script type="module" src="js/presentation.js"></script>
+  <script defer src="vendor/prismjs/prism.js"></script>
+  <script defer src="vendor/prismjs/components/prism-typescript.js"></script>
+</body>
+
+</html>
