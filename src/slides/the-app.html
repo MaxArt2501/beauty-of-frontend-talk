@@ -2,6 +2,11 @@
   <h1 class="meme-text uppercase">Ship it!</h1>
   <video src="img/ship-it.webm" autoplay muted loop class="full-media"></video>
 </p-slide>
+<p-slide
+  style="--slide-bg: hsl(208deg 100% 12%) linear-gradient(to bottom right, hsl(208deg 100% 12%), hsl(204deg 100% 22%))">
+  <h1 class="center uppercase meme-text">Becoming a PWA! 🚀✨</h1>
+  <img src="img/apps.webp" alt="Screenshot of a mobile screen featuring 'My City' as an app">
+</p-slide>
 <p-slide>
   <ul class="center">
     <li>
@@ -11,4 +16,89 @@
       <p-fragment>✌ a service worker w/ <code>fetch</code></p-fragment>
     </li>
   </ul>
+</p-slide>
+<p-slide>
+  <pre class="self-center"><code class="language-js">{
+  "name": "My City",</code>
+  <p-fragment><code class="language-js">"display": "standalone",</code></p-fragment>
+  <p-fragment><code class="language-js">"start_url": ".",</code></p-fragment>
+  <p-fragment><code class="language-js">"icons": [{
+    "src": "my-city_192.png",
+    "sizes": "192x192",
+    "purpose": "any"
+  }, ...
+  ],</code></p-fragment>
+  <p-fragment><code class="language-js">"background_color": "teal",
+  "theme_color": "teal", ...</code></p-fragment>
+}</code></pre>
+</p-slide>
+<p-slide>
+  <pre class="self-center"><code class="language-js">navigator.serviceWorker.register(
+  location.pathname + 'sw.js',
+  { scope: location.pathname }
+);</code></pre>
+</p-slide>
+<p-slide>
+  <pre class="self-center"><code class="language-js">self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open('MyCity').then(cache =>
+      cache.addAll([
+        `${path}my-city.js`,
+        `${path}my-city.css`,
+        ...
+      ])
+    )
+  );
+});</code></pre>
+</p-slide>
+<p-slide>
+  <pre class="self-center"><code class="language-js">self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(
+      response => response ??
+        fetch(event.request).then(response => {
+          const cloned = response.clone();
+          caches.open('MyCity').then(cache => {
+            cache.put(event.request, cloned);
+          });
+          return response;
+        })
+    )
+  );
+});</code></pre>
+</p-slide>
+<p-slide class="justify-end">
+  <h1 class="center uppercase meme-text">Dealing with old stuff</h1>
+  <img src="img/getting-old.webp" alt="Clip of a person rapidly aging" class="full-media">
+</p-slide>
+<p-slide>
+  <ul class="self-center">
+    <li>👉 Tie cache name to app version</li>
+    <li>
+      <p-fragment>👉 Remove all the old caches</p-fragment>
+    </li>
+    <li>
+      <p-fragment>👉 Show a notification for updates</p-fragment>
+    </li>
+    <li>
+      <p-fragment>👉 Reload when user allows the update</p-fragment>
+    </li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h1 class="center">Bonus!</h1>
+</p-slide>
+<p-slide>
+  <h3 class="center">Handling a custom protocol w/ your app</h3>
+  <p-fragment>
+    <h4 class="center"><code>web+mycity://SfrrZkl</code></h4>
+  </p-fragment>
+  <p-fragment class="self-center">
+    <pre class="language-js"><code>const PROTOCOL = 'web+mycity';
+if ('registerProtocolHandler' in navigator) {
+  const path = location.pathname.slice(0,
+    location.pathname.lastIndexOf('/') + 1);
+  navigator.registerProtocolHandler(PROTOCOL, `${path}#%s`);
+}</code></pre>
+  </p-fragment>
 </p-slide>
