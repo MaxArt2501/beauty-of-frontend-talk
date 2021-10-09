@@ -114,9 +114,11 @@
 .links {
   font-size: 70%;
   align-self: center;
+  columns: 2;
+  margin-top: 0.5em;
 
-  li {
-    margin-top: 0.5em;
+  li:not(:first-child) {
+    margin-top: inherit;
   }
   a {
     display: block;
@@ -213,6 +215,15 @@
   filter: drop-shadow(0.075em 0.075em 0 white);
 }
 
+.poppin {
+  animation: poppin 1s infinite;
+  transform-origin: 0 100%;
+  font-size: 300%;
+}
+.poppin::before {
+  content: "🎉";
+}
+
 @keyframes threedi-spin {
   from {
     transform: scale(1, 1) rotate3d(1, 0, 0, 0) rotate3d(0, 1, 0, 0)
@@ -230,5 +241,18 @@
   }
   to {
     --sketchy-arrow-random-seed: 40;
+  }
+}
+
+@keyframes poppin {
+  0%,
+  100% {
+    transform: rotate(-45deg) scaleX(1) rotate(45deg);
+  }
+  50% {
+    transform: rotate(-45deg) scaleX(0.75) rotate(45deg);
+  }
+  60% {
+    transform: rotate(-45deg) scaleX(1.25) rotate(45deg);
   }
 }

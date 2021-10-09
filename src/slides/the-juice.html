@@ -1,11 +1,26 @@
+<p-slide style="--slide-bg: #007383;">
+  <video src="img/clock-is-ticking.webm" muted loop autoplay class="full-media"></video>
+  <p-fragment>
+    <div style="position: relative; color: white; width: 10em; height: 10em; border-inline: 4em solid; margin: auto">
+    </div>
+  </p-fragment>
+</p-slide>
 <p-slide>
   <h1 class="center">Visibility API</h1>
-  <!-- Add a slide on how it's being used -->
+  <p-fragment class="self-center">
+    <pre class="language-js"><code>document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    stopClock();
+  } else if (!document.querySelector('dialog[open]')) {
+    startClock();
+  }
+});</code></pre>
+  </p-fragment>
 </p-slide>
 <p-slide>
   <h1 class="center">Victory? 🎉</h1>
 </p-slide>
-<p-slide class="slide-teal">
+<p-slide style="--slide-bg: #438480;">
   <video src="img/win.mp4" autoplay muted loop class="full-media"></video>
 </p-slide>
 <p-slide>
@@ -87,10 +102,10 @@ export const dbPromise = new Promise((resolve, reject) => {
   <p-fragment class="center">
     <h3>Alternatives <u>exist</u></h3>
     <ul>
-      <li>idb</li>
-      <li>localForage</li>
-      <li>dexie.js</li>
-      <li>&hellip;</li>
+      <li><a href="https://github.com/jakearchibald/idb">idb</a></li>
+      <li><a href="https://localforage.github.io/localForage/">localForage</a></li>
+      <li><a href="https://dexie.org/">Dexie.js</a></li>
+      <li><a href="https://sql.js.org/">sql.js</a></li>
     </ul>
   </p-fragment>
 </p-slide>
@@ -135,7 +150,7 @@ export const dbPromise = new Promise((resolve, reject) => {
   <div class="two-columns align-center">
     <div>
       <p-fragment style="display: block;">
-        <pre class="language-js"><code>const worker = new Worker('.js');
+        <pre class="language-js"><code>const worker = new Worker('sol.js');
 worker.postMessage({
   request: 'hint',
   token: 1234, ... });
@@ -198,10 +213,10 @@ requests.set(1234, {resolve...});</code></pre>
 <p-slide>
   <pre class="language-html self-center"><code>&lt;video>&lt;/video></code></pre>
   <p-fragment class="self-center">
-    <pre><code class="language-js">const [camera] = (await navigator.mediaDevices.enumerateDevices())
+    <pre><code class="language-js">const [camInfo] = (await navigator.mediaDevices.enumerateDevices())
   .filter(device => device.kind === 'videoinput');</code>
 <p-fragment><code class="language-js">const camera = await navigator.mediaDevices
-  .getUserMedia({ video: { deviceId: camera.deviceId } });</code></p-fragment>
+  .getUserMedia({ video: { deviceId: camInfo.deviceId } });</code></p-fragment>
 <p-fragment><code class="language-js">document.querySelector('video').srcObject = camera;</code></p-fragment></pre>
   </p-fragment>
 
@@ -217,4 +232,7 @@ if (detected) { ... }</code></pre>
 </p-slide>
 <p-slide>
   <h1 class="center">Project Fugu 🐡</h1>
+</p-slide>
+<p-slide>
+  <img class="full-media" src="img/fugu-tracker.webp" alt="Screenshot of the page Fugu API Tracker">
 </p-slide>

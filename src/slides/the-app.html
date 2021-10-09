@@ -2,6 +2,53 @@
   <h1 class="meme-text uppercase">Ship it!</h1>
   <video src="img/ship-it.webm" autoplay muted loop class="full-media"></video>
 </p-slide>
+<p-slide>
+  <h3 class="center">A little problem&hellip; 🤔</h3>
+  <div class="two-columns">
+    <p-fragment>
+      <video src="img/great-scroll.webm" muted loop autoplay style="height: 10em; width: 100%;"></video>
+    </p-fragment>
+    <p-fragment>
+      <video src="img/laggy-scroll.webm" muted loop autoplay style="height: 10em; width: 100%;"></video>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <h1 class="center">DevTools to the rescue! 🚑</h1>
+</p-slide>
+<p-slide>
+  <img src="img/perf-before.webp" alt="Screenshot of a Chrome DevTools performance snapshot, showing janky scrolling"
+    class="full-media">
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 2em; top: 5.7em; left: 15.9em; transform: rotate(-90deg);"></div>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 2em; top: 8.7em; left: 11.7em; transform: rotate(90deg);"></div>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <div class="two-columns">
+    <div>
+      <h3>After moving ONE line of CSS&hellip;</h3>
+      <p-fragment index="1" style="display: block;">
+        <div class="center poppin"></div>
+      </p-fragment>
+    </div>
+    <p-fragment>
+      <video src="img/nice-scroll.webm" muted loop autoplay style="height: 10em; width: 100%;"></video>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <img src="img/perf-after.webp" alt="Screenshot of a Chrome DevTools performance snapshot, showing decent scrolling"
+    class="full-media">
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 2em; top: 5.7em; left: 15em; transform: rotate(-90deg);"></div>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 2em; top: 8.7em; left: 11.7em; transform: rotate(90deg);"></div>
+  </p-fragment>
+</p-slide>
 <p-slide
   style="--slide-bg: hsl(208deg 100% 12%) linear-gradient(to bottom right, hsl(208deg 100% 12%), hsl(204deg 100% 22%))">
   <h1 class="center uppercase meme-text">Becoming a PWA! 🚀✨</h1>
@@ -33,13 +80,16 @@
 }</code></pre>
 </p-slide>
 <p-slide>
-  <pre class="self-center"><code class="language-js">navigator.serviceWorker.register(
+  <h2 class="center">About the service worker&hellip;</h2>
+  <pre class="self-center"><code class="language-js">// my-city.js
+navigator.serviceWorker.register(
   location.pathname + 'sw.js',
   { scope: location.pathname }
 );</code></pre>
 </p-slide>
 <p-slide>
-  <pre class="self-center"><code class="language-js">self.addEventListener('install', event => {
+  <pre class="self-center"><code class="language-js">// sw.js
+self.addEventListener('install', event => {
   event.waitUntil(
     caches.open('MyCity').then(cache =>
       cache.addAll([
@@ -101,4 +151,24 @@ if ('registerProtocolHandler' in navigator) {
   navigator.registerProtocolHandler(PROTOCOL, `${path}#%s`);
 }</code></pre>
   </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 2.5em; top: 5.7em; left: 18em; transform: scale(-1, 1) rotate(-72deg);">
+    </div>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 2em; top: 7.9em; left: 19em; transform: rotate(74deg);"></div>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center">And after the origin trial will end&hellip;</h3>
+  <pre class="self-center language-js"><code>// manifest.json
+{
+  ...
+  "protocol_handlers": [
+    {
+      "protocol": "web+mycity",
+      "url": "#%s"
+    }
+  ]
+}</code></pre>
 </p-slide>
