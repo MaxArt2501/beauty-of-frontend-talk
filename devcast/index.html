@@ -37,7 +37,8 @@
   <div class="my-info">
     <h4>
       <img src="img/twitter.svg" alt="Twitter logo"> /
-      <img src="img/github.svg" alt="GitHub logo">
+      <img src="img/github.svg" alt="GitHub logo"> /
+      <img src="img/dev-to.svg" alt="dev.to logo">
       @MaxArt2501
     </h4>
   </div>
@@ -50,16 +51,16 @@
 </p-slide>
     <p-slide class="justify-start">
   <h1 class="center meme-text uppercase">
-    È tutto cominciato da&hellip;
+    It all began from&hellip;
   </h1>
   <p-fragment><img class="full-media" src="img/brain-trainer.jpg"
-      alt="Pagina di Brain-Trainer che mostra alcuni schemi del gioco 'La mia città'"></p-fragment>
+      alt="A page of Brain-Trainer showing schemes of the game 'La mia città'"></p-fragment>
 </p-slide>
 <p-slide>
-  <img src="img/sudoku.svg" alt="Uno schema di sudoku" class="center" style="height: 12em;">
+  <img src="img/sudoku.svg" alt="A sudoku puzzle" class="center" style="height: 12em;">
 </p-slide>
 <p-slide>
-  <img src="img/math-guy.webp" alt="Un tizio confuso che conta sulle sue dita" class="full-media">
+  <img src="img/math-guy.webp" alt="A confused fellow counting on his fingers" class="full-media">
 </p-slide>
     <p-slide>
   <pre class="self-center"><code class="language-js">[
@@ -164,14 +165,29 @@ interface City {
   <h1 class="meme-text center blink uppercase" style="margin-block-end: -1em;">⭐️ '90s rock! ⭐️</h1>
   <img src="img/awesome.webp" alt="Meme of the kid upping his thumb in front of a computer" style="height: 10em;">
 </p-slide>
-    <p-slide>
+    <p-slide style="--slide-bg: #007383;">
+  <video src="img/clock-is-ticking.webm" muted loop autoplay class="full-media"></video>
+  <p-fragment>
+    <div style="position: relative; color: white; width: 10em; height: 10em; border-inline: 4em solid; margin: auto">
+    </div>
+  </p-fragment>
+</p-slide>
+<p-slide>
   <h1 class="center">Visibility API</h1>
-  <!-- Add a slide on how it's being used -->
+  <p-fragment class="self-center">
+    <pre class="language-js"><code>document.addEventListener('visibilitychange', () => {
+  if (document.hidden) {
+    stopClock();
+  } else if (!document.querySelector('dialog[open]')) {
+    startClock();
+  }
+});</code></pre>
+  </p-fragment>
 </p-slide>
 <p-slide>
   <h1 class="center">Victory? 🎉</h1>
 </p-slide>
-<p-slide class="slide-teal">
+<p-slide style="--slide-bg: #438480;">
   <video src="img/win.mp4" autoplay muted loop class="full-media"></video>
 </p-slide>
 <p-slide>
@@ -253,10 +269,10 @@ export const dbPromise = new Promise((resolve, reject) => {
   <p-fragment class="center">
     <h3>Alternatives <u>exist</u></h3>
     <ul>
-      <li>idb</li>
-      <li>localForage</li>
-      <li>dexie.js</li>
-      <li>&hellip;</li>
+      <li><a href="https://github.com/jakearchibald/idb">idb</a></li>
+      <li><a href="https://localforage.github.io/localForage/">localForage</a></li>
+      <li><a href="https://dexie.org/">Dexie.js</a></li>
+      <li><a href="https://sql.js.org/">sql.js</a></li>
     </ul>
   </p-fragment>
 </p-slide>
@@ -301,7 +317,7 @@ export const dbPromise = new Promise((resolve, reject) => {
   <div class="two-columns align-center">
     <div>
       <p-fragment style="display: block;">
-        <pre class="language-js"><code>const worker = new Worker('.js');
+        <pre class="language-js"><code>const worker = new Worker('sol.js');
 worker.postMessage({
   request: 'hint',
   token: 1234, ... });
@@ -364,10 +380,10 @@ requests.set(1234, {resolve...});</code></pre>
 <p-slide>
   <pre class="language-html self-center"><code>&lt;video>&lt;/video></code></pre>
   <p-fragment class="self-center">
-    <pre><code class="language-js">const [camera] = (await navigator.mediaDevices.enumerateDevices())
+    <pre><code class="language-js">const [camInfo] = (await navigator.mediaDevices.enumerateDevices())
   .filter(device => device.kind === 'videoinput');</code>
 <p-fragment><code class="language-js">const camera = await navigator.mediaDevices
-  .getUserMedia({ video: { deviceId: camera.deviceId } });</code></p-fragment>
+  .getUserMedia({ video: { deviceId: camInfo.deviceId } });</code></p-fragment>
 <p-fragment><code class="language-js">document.querySelector('video').srcObject = camera;</code></p-fragment></pre>
   </p-fragment>
 
@@ -384,9 +400,64 @@ if (detected) { ... }</code></pre>
 <p-slide>
   <h1 class="center">Project Fugu 🐡</h1>
 </p-slide>
+<p-slide>
+  <img class="full-media" src="img/fugu-tracker.webp" alt="Screenshot of the page Fugu API Tracker">
+</p-slide>
     <p-slide class="justify-start">
   <h1 class="meme-text uppercase">Ship it!</h1>
   <video src="img/ship-it.webm" autoplay muted loop class="full-media"></video>
+</p-slide>
+<p-slide>
+  <h3 class="center">A little problem&hellip; 🤔</h3>
+  <div class="two-columns">
+    <p-fragment>
+      <video src="img/great-scroll.webm" muted loop autoplay style="height: 10em; width: 100%;"></video>
+    </p-fragment>
+    <p-fragment>
+      <video src="img/laggy-scroll.webm" muted loop autoplay style="height: 10em; width: 100%;"></video>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <h1 class="center">DevTools to the rescue! 🚑</h1>
+</p-slide>
+<p-slide>
+  <img src="img/perf-before.webp" alt="Screenshot of a Chrome DevTools performance snapshot, showing janky scrolling"
+    class="full-media">
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 2em; top: 5.7em; left: 15.9em; transform: rotate(-90deg);"></div>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 2em; top: 8.7em; left: 11.7em; transform: rotate(90deg);"></div>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <div class="two-columns">
+    <div>
+      <h3>After moving ONE line of CSS&hellip;</h3>
+      <p-fragment index="1" style="display: block;">
+        <div class="center poppin"></div>
+      </p-fragment>
+    </div>
+    <p-fragment>
+      <video src="img/nice-scroll.webm" muted loop autoplay style="height: 10em; width: 100%;"></video>
+    </p-fragment>
+  </div>
+</p-slide>
+<p-slide>
+  <img src="img/perf-after.webp" alt="Screenshot of a Chrome DevTools performance snapshot, showing decent scrolling"
+    class="full-media">
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 2em; top: 5.7em; left: 15em; transform: rotate(-90deg);"></div>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 2em; top: 8.7em; left: 11.7em; transform: rotate(90deg);"></div>
+  </p-fragment>
+</p-slide>
+<p-slide
+  style="--slide-bg: hsl(208deg 100% 12%) linear-gradient(to bottom right, hsl(208deg 100% 12%), hsl(204deg 100% 22%))">
+  <h1 class="center uppercase meme-text">Becoming a PWA! 🚀✨</h1>
+  <img src="img/apps.webp" alt="Screenshot of a mobile screen featuring 'My City' as an app">
 </p-slide>
 <p-slide>
   <ul class="center">
@@ -398,6 +469,114 @@ if (detected) { ... }</code></pre>
     </li>
   </ul>
 </p-slide>
+<p-slide>
+  <pre class="self-center"><code class="language-js">{
+  "name": "My City",</code>
+  <p-fragment><code class="language-js">"display": "standalone",</code></p-fragment>
+  <p-fragment><code class="language-js">"start_url": ".",</code></p-fragment>
+  <p-fragment><code class="language-js">"icons": [{
+    "src": "my-city_192.png",
+    "sizes": "192x192",
+    "purpose": "any"
+  }, ...
+  ],</code></p-fragment>
+  <p-fragment><code class="language-js">"background_color": "teal",
+  "theme_color": "teal", ...</code></p-fragment>
+}</code></pre>
+</p-slide>
+<p-slide>
+  <h2 class="center">About the service worker&hellip;</h2>
+  <pre class="self-center"><code class="language-js">// my-city.js
+navigator.serviceWorker.register(
+  location.pathname + 'sw.js',
+  { scope: location.pathname }
+);</code></pre>
+</p-slide>
+<p-slide>
+  <pre class="self-center"><code class="language-js">// sw.js
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open('MyCity').then(cache =>
+      cache.addAll([
+        `${path}my-city.js`,
+        `${path}my-city.css`,
+        ...
+      ])
+    )
+  );
+});</code></pre>
+</p-slide>
+<p-slide>
+  <pre class="self-center"><code class="language-js">self.addEventListener('fetch', event => {
+  event.respondWith(
+    caches.match(event.request).then(
+      response => response ??
+        fetch(event.request).then(response => {
+          const cloned = response.clone();
+          caches.open('MyCity').then(cache => {
+            cache.put(event.request, cloned);
+          });
+          return response;
+        })
+    )
+  );
+});</code></pre>
+</p-slide>
+<p-slide class="justify-end">
+  <h1 class="center uppercase meme-text">Dealing with old stuff</h1>
+  <img src="img/getting-old.webp" alt="Clip of a person rapidly aging" class="full-media">
+</p-slide>
+<p-slide>
+  <ul class="self-center">
+    <li>👉 Tie cache name to app version</li>
+    <li>
+      <p-fragment>👉 Remove all the old caches</p-fragment>
+    </li>
+    <li>
+      <p-fragment>👉 Show a notification for updates</p-fragment>
+    </li>
+    <li>
+      <p-fragment>👉 Reload when user allows the update</p-fragment>
+    </li>
+  </ul>
+</p-slide>
+<p-slide>
+  <h1 class="center">Bonus!</h1>
+</p-slide>
+<p-slide>
+  <h3 class="center">Handling a custom protocol w/ your app</h3>
+  <p-fragment>
+    <h4 class="center"><code>web+mycity://SfrrZkl</code></h4>
+  </p-fragment>
+  <p-fragment class="self-center">
+    <pre class="language-js"><code>const PROTOCOL = 'web+mycity';
+if ('registerProtocolHandler' in navigator) {
+  const path = location.pathname.slice(0,
+    location.pathname.lastIndexOf('/') + 1);
+  navigator.registerProtocolHandler(PROTOCOL, `${path}#%s`);
+}</code></pre>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 2.5em; top: 5.7em; left: 18em; transform: scale(-1, 1) rotate(-72deg);">
+    </div>
+  </p-fragment>
+  <p-fragment>
+    <div class="sketchy-arrow" style="width: 2em; top: 7.9em; left: 19em; transform: rotate(74deg);"></div>
+  </p-fragment>
+</p-slide>
+<p-slide>
+  <h3 class="center">And after the origin trial will end&hellip;</h3>
+  <pre class="self-center language-js"><code>// manifest.json
+{
+  ...
+  "protocol_handlers": [
+    {
+      "protocol": "web+mycity",
+      "url": "#%s"
+    }
+  ]
+}</code></pre>
+</p-slide>
     <p-slide>
   <h4 class="our-header">Links</h4>
   <ul class="links">
@@ -405,6 +584,36 @@ if (detected) { ... }</code></pre>
       🔗 My City: the game
       <a href="https://maxart2501.github.io/my-city/">
         maxart2501.github.io/my-city/
+      </a>
+    </li>
+    <li>
+      🔗 Giorgio Dendi: La Mia Città (🇮🇹)
+      <a href="https://www.giorgiodendi.com/citta/">
+        giorgiodendi.com/citta
+      </a>
+    </li>
+    <li>
+      🔗 Shape Detection API
+      <a href="https://web.dev/shape-detection/">
+        web.dev/shape-detection
+      </a>
+    </li>
+    <li>
+      🔗 Fugu API Tracker
+      <a href="https://fugu-tracker.web.app/">
+        fugu-tracker.web.app
+      </a>
+    </li>
+    <li>
+      🔗 PWA Builder
+      <a href="https://www.pwabuilder.com/">
+        pwabuilder.com
+      </a>
+    </li>
+    <li>
+      🔗 URL Protocol Handler
+      <a href="https://web.dev/url-protocol-handler/">
+        web.dev/url-protocol-handler
       </a>
     </li>
   </ul>
